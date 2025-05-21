@@ -1,0 +1,24 @@
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100% !important;
+    }
+
+    tr {
+        margin-bottom: 1em;
+    }
+
+    td, th {
+        text-align: center;
+        padding: 10px;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .container {
+        margin-bottom: 20px !important;
+    }
+}

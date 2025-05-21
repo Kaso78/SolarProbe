@@ -7,6 +7,7 @@
 	<style></style>
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./css/responsive.css">
     <link rel="stylesheet" href="./swx_planetary_k_index/planetary_k_index.css">
 </head>
 <body>
@@ -78,8 +79,8 @@
             </table>
         </div>
     
-        <div>
-            <table width="100%">
+        <div class="container">
+            <table>
                 <tr>
                     <td style="text-align: center; width: 20%;">
                         <h2 style="color: white;">ACE Solar Wind</h2>
@@ -111,7 +112,6 @@
                         </div>
                     </td>
                     <td style="text-align: center; width: 40%;">
-                        <h2 style="color: white;">GOES X-Ray Flux</h2>
                         <div class="swpc-highcharts" 
                         data-chart-config='{
                             "instrument-type": "xrays",
@@ -185,8 +185,8 @@
             </table>
         </div>
 
-        <div>
-            <table width="100%">
+        <div class="container">
+            <table>
                 <tr>
                     <td style="text-align: center; width: 33%;">
                         <div id="094" class="suviTabcontent" style="display: block;">
@@ -219,8 +219,8 @@
             </table>
         </div>
 
-        <div>
-            <table width="100%">
+        <div class="container">
+            <table>
                 <tr>
                     <td style="text-align: center; width: 33%;">
                         <div id="195" class="suviTabcontent" style="display: block;">
@@ -254,14 +254,28 @@
         </div>
 
         <div>
-            <table width="100%">
+            <table>
                 <tr>
                     <td style="text-align: center; width: 33%;">
                         <h2 style="color: white;">D-Region Absorption Preditcion</h2>
                         <div class="animation" id="animate0">
                             <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/d-rap_global.json">
                             <input type="hidden" class="autoStart" name="autoStart" value="yes">
-                            <canvas class="animationCanvas" title="Click to view full screen" height="475" width="850" style="max-width: 850px;"></canvas>
+                            <canvas class="animationCanvas" title="Click to view full screen" height="750" width="850" style="max-width: 850px;"></canvas>
+                        </div>
+                    </td>
+                    <td style="text-align: center; width: 33%;">
+                        <div class="animation" id="animate7">
+                            <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/ovation_north_24h.json">
+                            <input type="hidden" class="autoStart" name="autoStart" value="yes">
+                            <canvas class="animationCanvas" title="Click to view full screen" height="1024" width="1024" style="max-width: 1024px;"></canvas>
+                        </div>
+                    </td>
+                    <td style="text-align: center; width: 33%;">
+                        <div class="animation" id="animate8">
+                            <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/ovation_south_24h.json">
+                            <input type="hidden" class="autoStart" name="autoStart" value="yes">
+                            <canvas class="animationCanvas" title="Click to view full screen" height="1024" width="1024" style="max-width: 1024px;"></canvas>
                         </div>
                     </td>
                 </tr>
