@@ -1,0 +1,28 @@
+
+#planetary_k_index_container {
+    margin:0 auto;
+    width:auto;
+    max-width:1158;
+}
+
+.planetary_k_index_chart {
+    margin: 0 auto;
+    display:inline-block;
+    width:auto;
+}
+
+.planetary_k_index_g_scale {
+    display:inline-block;
+}
+
+
+.rotated {
+    transform: rotate(-90deg);
+}
+
+@media only screen and (max-width:670px){
+    td{
+        display:block;
+        width:100%;
+    }
+}
