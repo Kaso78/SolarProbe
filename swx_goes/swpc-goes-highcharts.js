@@ -4,14 +4,14 @@
 
   var goesCharts = [];
   const configUrl = '/config.json';
-  var USE_PUBLIC_DATA_SERVICE = false;
+  var USE_PUBLIC_DATA_SERVICE = true;
   var isDrupal = false;
-  var DATA_SERVICE_URL = "";  
+  var DATA_SERVICE_URL = "https://services.swpc.noaa.gov";  
   var light_or_dark_default = "dark";
   var DEFAULT_DURATION = 1440;
   const RESPONSIVE_WIDTH = 800;
 
-  var GOES_SERVICE_URL = "";
+  var GOES_SERVICE_URL = "https://services.swpc.noaa.gov/json/goes";
   const refreshIntervals = {
     360: 1,
     1440: 1,
@@ -69,21 +69,8 @@
       DATA_SERVICE_URL = $(data_service_url).text();
       light_or_dark_default = "light";
       DEFAULT_DURATION = 4320;
-      findCharts();
     }
-    else
-    {
-      // //use local data service, with config from the node.js container
-      // $.getJSON(configUrl, function (data)
-      // {
-      //   GOES_SERVICE_URL = data.GOES_SERVICE_ADDRESS;
-      //   //setPrimarySecondaryFromQueryString();
-      //   findCharts();
-      // });
-      // salta il config.json e imposta direttamente il servizio
-      GOES_SERVICE_URL = "https://services.swpc.noaa.gov";
-      findCharts();
-    }
+    findCharts();
   }
 
   function findCharts()
@@ -134,7 +121,9 @@
       this.chartConfig = JSON.parse(paramData);
     }else{
       // get configuration for this chart from the data-chart-config attribute of this div
-      this.chartConfig = $('#' + highchartsDivId).data("chart-config");
+      let configAttr = $('#' + highchartsDivId).attr("data-chart-config");
+      this.chartConfig = typeof configAttr === "string" ? JSON.parse(configAttr) : configAttr;
+      // this.chartConfig = $('#' + highchartsDivId).data("chart-config");
     }
     
     if ('color-mode' in this.chartConfig)
@@ -192,7 +181,7 @@
       this.warningLatencyMinutes = 15;
       this.criticalLatencyMinutes = 30;
     }
-    else if (this.instrumentType == "integral-protons")
+    else if (this.instrumentType == "protons")
     {
       this.warningLatencyMinutes = 15;
       this.criticalLatencyMinutes = 30;
@@ -267,7 +256,6 @@
 
   }
 
-
   //Load data onto the plot, or refresh plot with current data
   GOESChart.prototype.loadData = function ()
   {
@@ -291,7 +279,13 @@
           {
             let seriesNumber = satelliteIndex * totalSeries + seriesIndex;
             chartObject.chart.series[seriesNumber].setData(plotSeries.parsedData[seriesIndex], false);
-            let latestValue = Number.parseFloat(chartObject.chart.series[seriesNumber].yData[chartObject.chart.series[seriesNumber].yData.length-1]).toPrecision(3);
+            // console.log("Series", seriesNumber, chartObject.chart.series[seriesNumber]);
+            // console.log("YData", chartObject.chart.series[seriesNumber].yData);
+            let yData = chartObject.chart.series[seriesNumber].yData;
+            let latestValue = 0;
+            if (Array.isArray(yData) && yData.length) {
+              latestValue = Number.parseFloat(chartObject.chart.series[seriesNumber].yData[chartObject.chart.series[seriesNumber].yData.length-1]).toPrecision(3);
+            }
 
             if (chartObject.instrumentType == "magnetometers")
             {
@@ -587,12 +581,14 @@
       {
          experimental_path = '/experimental';
       }
-      return DATA_SERVICE_URL + experimental_path +
+      var json_path = DATA_SERVICE_URL + experimental_path +
         "/json/goes/" +
         satellite + "/" +
         instrumentType +
         "-" + durationStrings[duration] +
         ".json";
+      console.log("json_path: " + json_path);
+      return json_path;
 
     }
     else
