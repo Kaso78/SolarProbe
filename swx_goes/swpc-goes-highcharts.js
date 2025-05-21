@@ -575,7 +575,7 @@
       }
       if (instrumentType == 'protons')
       {
-        instrumentType = intsrumentType + "-plot";
+        instrumentType = instrumentType + "-plot";
       }
       if(experimental)
       {
