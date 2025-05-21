@@ -59,7 +59,7 @@ $(document).ready(function() {
 
     //add the loop controls div and buttons with a class of the animate id
     $(this).append('<div class="animationToolbar">'
-                 + '<button name="startButton" class="animationButton loadButton startButton play" value="pause" type="button" title="play or pause the animation"></button>'
+                 + '<button name="startButton" class="animationButton loadButton startButton play" value="pause" type="button" title="play or pause the animation" style="display: none;"></button>'
                  + '<div class="animationToolbarSlider"></div>'
                  + '</div>');
 

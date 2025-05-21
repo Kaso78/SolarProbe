@@ -102,6 +102,7 @@
 
             kp_chart = Highcharts.chart(chartDiv, {
                 chart: {
+                    backgroundColor: '#000000',
                     height: chart_height,
                     events:
                     {
