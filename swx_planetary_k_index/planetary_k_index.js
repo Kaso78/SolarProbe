@@ -18,7 +18,7 @@
             kp_chart.setSize($("#planetary_k_index").width(), chart_height);
 
             if($("#planetary_k_index").width() < 600){
-                chart.update({
+                kp_chart.update({
                     plotOptions: {
                         series: {
                             minPointLength: 3,

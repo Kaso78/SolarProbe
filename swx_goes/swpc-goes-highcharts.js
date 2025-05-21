@@ -192,7 +192,7 @@
       this.warningLatencyMinutes = 15;
       this.criticalLatencyMinutes = 30;
     }
-    else if (this.instrumentType == "protons")
+    else if (this.instrumentType == "integral-protons")
     {
       this.warningLatencyMinutes = 15;
       this.criticalLatencyMinutes = 30;
