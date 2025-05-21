@@ -3,6 +3,51 @@
 
 @import url("slider.css");
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse !important;
+    width: 100%;
+}
+
+td, th {
+    border: 2px solid black !important;
+    padding: 10px;
+    text-align: center;
+}
+
+.scroll-wrapper {
+    overflow-x: auto;
+    width: 100%;
+}
+
+canvas {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100% !important;
+    }
+
+    tr {
+        margin-bottom: 1em;
+    }
+
+    td, th {
+        text-align: center;
+        padding: 10px;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
 html {
     background-color: #000;
     margin: 0;

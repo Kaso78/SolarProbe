@@ -4,43 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Solar Probe</title>
-	<style>
-        
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-        
-        table, tbody, th, td, tr {
-            border: 2px solid black!important;
-            border-collapse: collapse!important;
-            overflow-x: auto!important;
-        }
-
-        canvas {
-            max-width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-                width: 100% !important;
-            }
-
-            tr {
-                margin-bottom: 1em;
-            }
-
-            td, th {
-                text-align: center;
-                padding: 10px;
-            }
-
-            canvas {
-                width: 100% !important;
-                height: auto !important;
-            }
-        }
-	</style>
+	<style></style>
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/slider.css">
     <link rel="stylesheet" href="./swx_planetary_k_index/planetary_k_index.css">
@@ -60,41 +24,26 @@
     <script src="./js/image-autorefresh.js"></script>
     <script src="./swx_planetary_k_index/planetary_k_index.js"></script>
     <script src="./swx_goes/swpc-goes-highcharts.js"></script>    
-    <div align="center">
+    <div style="text-align: center;">
         <h1 style="color: white;">Solar Probe Dashboard</h1>
         <h2 style="color: blanchedalmond; font-size: 1.2em; margin-top: 2em;">
-            Data sourced from official public services:
+            Data sourced from :
             <a href="https://www.swpc.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA SWPC</a> and
             <a href="https://www.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA</a>.
         </h2>
         <div>
             <table>
                 <tr>
-                    <td style="text-align: center;">  
-                        <h2 style="color: white;">D-Region Absorption Preditcion</h2>
-                    </td>
-                    <td style="text-align: center;">  
-                        <h2 style="color: white;">Solar Visible Light (SDO)</h2>
-                    </td>
-                    <td style="width: 18%; text-align: center;">  
-                        <h2 style="color: white;">GOES-19 CCOR-1</h2>
-                    </td>
-                    <td style="text-align: center;">  
-                        <h2 style="color: white;">Lasco C2</h2>
-                    </td>
-                    <td style="text-align: center;">  
-                        <h2 style="color: white;">Lasco C3</h2>
-                    </td>
-                </tr>
-                <tr>
-                    <td>    
-                        <div class="animation" id="animate0">
-                            <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/d-rap_global.json">
+                    <td style="text-align: center;">
+                        <h2 style="color: white;">WSA - Enlil Solar Wind Prediction</h2>
+                        <div class="animation" id="animate4">
+                            <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/enlil.json">
                             <input type="hidden" class="autoStart" name="autoStart" value="yes">
-                            <canvas class="animationCanvas" title="Click to view full screen" height="475" width="850" style="max-width: 850px;"></canvas>
+                            <canvas class="animationCanvas" title="Click to view full screen" height="450" width="850" style="max-width: 850px;"></canvas>
                         </div>
                     </td>
-                    <td>    
+                    <td style="text-align: center;">
+                        <h2 style="color: white;">Solar Visible Light (SDO)</h2>    
                         <div> 
                             <div class="animation" id="animate1">
                             <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/sdo-hmii.json">
@@ -102,20 +51,23 @@
                             <canvas class="animationCanvas" title="Click to view full screen" height="512" width="512" style="max-width: 512px;"></canvas>
                         </div>
                     </td>
-                    <td>    
+                    <td style="width: 18%; text-align: center;">
+                        <h2 style="color: white;">GOES-19 CCOR-1</h2>
                         <div class="animation" id="animate9">
                             <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/ccor1/ccor1.json">
                             <input type="hidden" class="autoStart" name="autoStart" value="yes">
                             <canvas class="animationCanvas" title="Click to view full screen" height="1205" width="1204" style="max-width: 1204px;"></canvas>
                     </td>
-                    <td>
+                    <td style="text-align: center;">
+                        <h2 style="color: white;">Lasco C2</h2>
                         <div class="animation" id="animate2">
                             <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/lasco-c2.json">
                             <input type="hidden" class="autoStart" name="autoStart" value="yes">
                             <canvas class="animationCanvas" title="Click to view full screen" height="512" width="512" style="max-width: 512px;"></canvas>
                         </div>
                     </td>
-                    <td>
+                    <td style="text-align: center;">
+                        <h2 style="color: white;">Lasco C3</h2>
                         <div class="animation" id="animate3">
                             <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/lasco-c3.json">
                             <input type="hidden" class="autoStart" name="autoStart" value="yes">
@@ -128,26 +80,9 @@
     
         <div>
             <table width="100%">
-                <tr>    
-                    <td style="text-align: center; width: 33%;">  
-                        <h2 style="color: white;">WSA - Enlil Solar Wind Prediction</h2>
-                    </td>
-                    <td style="text-align: center; width: 33%;">  
+                <tr>
+                    <td style="text-align: center; width: 33%;">
                         <h2 style="color: white;">ACE Solar Wind</h2>
-                    </td>
-                    <td style="text-align: center;"> 
-                        <h2 style="color: white;">GOES X-Ray Flux</h2>
-                    </td>
-                </tr>
-                <tr>    
-                    <td>
-                        <div class="animation" id="animate4">
-                            <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/enlil.json">
-                            <input type="hidden" class="autoStart" name="autoStart" value="yes">
-                            <canvas class="animationCanvas" title="Click to view full screen" height="450" width="850" style="max-width: 850px;"></canvas>
-                        </div>
-                    </td>
-                    <td style="text-align: center;">
                         <div id="planetary_k_index_container">
                             <div id="planetary_k_index" data-highcharts-chart="2" style="overflow: hidden;">
                             </div>
@@ -174,8 +109,9 @@
                                 </tr>
                             </tbody></table>
                         </div>
-                    </td>
-                    <td>
+                    </td>                     
+                    <td style="text-align: center;">
+                        <h2 style="color: white;">GOES X-Ray Flux</h2>
                         <div class="swpc-highcharts" 
                         data-chart-config='{
                             "instrument-type": "integral-protons",
@@ -214,6 +150,14 @@
                             ]
                         }' 
                         style="overflow: hidden;">
+                        </div>
+                    </td>
+                    <td style="text-align: center; width: 33%;">
+                        <h2 style="color: white;">D-Region Absorption Preditcion</h2>
+                        <div class="animation" id="animate0">
+                            <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/d-rap_global.json">
+                            <input type="hidden" class="autoStart" name="autoStart" value="yes">
+                            <canvas class="animationCanvas" title="Click to view full screen" height="475" width="850" style="max-width: 850px;"></canvas>
                         </div>
                     </td>
                 </tr>
