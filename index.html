@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Solar Probe</title>
+	<style>
+        table, tbody, th, td, tr {
+            border: 5px solid black;
+            border-collapse: collapse;
+        }
+	</style>
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./swx_planetary_k_index/planetary_k_index.css">
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations.js"></script>
+    <script src="./js/animator.js"></script>
+    <script src="./js/clock.js"></script>
+    <script src="./js/strftime.js"></script>
+    <script src="./js/data-service-image-handler.js"></script>
+    <script src="./js/goes_sxi.js"></script>
+    <script src="./js/image-autorefresh.js"></script>
+    <script src="./swx_planetary_k_index/planetary_k_index.js"></script>
+    <script src="./swx_goes/swpc-goes-highcharts.js"></script>    
+    <div align="center">
+        <h1 style="color: white;">Solar Probe</h1>
+        <table width="100%">
+            <tr>
+                <td align="center">
+                    <table>
+                        <tr>
+                            <td align="center">  
+                                <h2 style="color: white;">D-Region Absorption Preditcion</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>    
+                                <div class="animation" id="animate0">
+                                    <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/d-rap_global.json">
+                                    <input type="hidden" class="autoStart" name="autoStart" value="yes">
+                                    <canvas class="animationCanvas" title="Click to view full screen" height="475" width="850" style="max-width: 850px;"></canvas>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table> 
+                        <tr>    
+                            <td align="center">  
+                                <h2 style="color: white;">Solar Visible Light (SDO)</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>    
+                                <div> 
+                                    <div class="animation" id="animate1">
+                                    <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/sdo-hmii.json">
+                                    <input type="hidden" class="autoStart" name="autoStart" value="yes">
+                                    <canvas class="animationCanvas" title="Click to view full screen" height="512" width="512" style="max-width: 512px;"></canvas>
+                                </div>
+                            </td>    
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table> 
+                        <tr>
+                            <td align="center">  
+                                <h2 style="color: white;">Lasco C2</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="animation" id="animate2">
+                                    <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/lasco-c2.json">
+                                    <input type="hidden" class="autoStart" name="autoStart" value="yes">
+                                    <canvas class="animationCanvas" title="Click to view full screen" height="512" width="512" style="max-width: 512px;"></canvas>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table> 
+                        <tr>
+                            <td align="center">  
+                                <h2 style="color: white;">Lasco C3</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="animation" id="animate3">
+                                    <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/lasco-c3.json">
+                                    <input type="hidden" class="autoStart" name="autoStart" value="yes">
+                                    <canvas class="animationCanvas" title="Click to view full screen" height="512" width="512" style="max-width: 512px;"></canvas>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>    
+                <td align="center">
+                    <table>
+                        <tr>
+                            <td align="center">  
+                                <h2 style="color: white;">WSA - Enlil Solar Wind Prediction</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="animation" id="animate4">
+                                    <input type="hidden" class="sourceUrls" name="sourceUrls" value="https://services.swpc.noaa.gov/products/animations/enlil.json">
+                                    <input type="hidden" class="autoStart" name="autoStart" value="yes">
+                                    <canvas class="animationCanvas" title="Click to view full screen" height="450" width="850" style="max-width: 850px;"></canvas>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>    
+                    <table> 
+                        <tr>
+                            <td align="center">  
+                                <h2 style="color: white;">ACE Solar Wind</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="100%">
+                                <div id="planetary_k_index_container">
+                                    <div id="planetary_k_index" data-highcharts-chart="2" style="overflow: hidden;">
+                                    </div>
+                                </div>
+                                <div><b>Updated Time: <span id="planetary_k_index_updated_time"></span></b></div>
+                                <div id="G_scales" style="overflow-x:auto;">
+                                    <table class="scales_table">
+                                        <colgroup>
+                                            <col width="16%">
+                                            <col width="16%">
+                                            <col width="16%">
+                                            <col width="16%">
+                                            <col width="20%">
+                                            <col width="16%">
+                                        </colgroup>
+                                        <caption><a href="https://www.swpc.noaa.gov/noaa-scales-explanation" target="_blank">NOAA Scales Geomagnetic Storms</a></caption>
+                                        <tbody><tr>
+                                            <th class="noaa_scale_bg_0">Kp &lt; 5</th>
+                                            <th class="noaa_scale_bg_1">Kp = 5 (G1)</th>       
+                                            <th class="noaa_scale_bg_2">Kp = 6 (G2)</th>
+                                            <th class="noaa_scale_bg_3">Kp = 7 (G3)</th>
+                                            <th class="noaa_scale_bg_4">Kp = 8, 9- (G4)</th>
+                                            <th class="noaa_scale_bg_5">Kp = 9o (G5)</th>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>    
+                    <table> 
+                        <tr>
+                            <td align="center">  
+                                <h2 style="color: white;">GOES X-Ray Flux</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="100%">
+                                <div class="swpc-highcharts" 
+                                data-chart-config='{
+                                    "instrument-type": "integral-protons",
+                                    "satellites": ["primary"],
+                                    "fields": [
+                                        {
+                                            "filter-field-name": "energy",
+                                            "filter-field-value": ">=10 MeV",
+                                            "data-field": "flux",
+                                            "name": "≥ 10 MeV"
+                                        },
+                                        {
+                                            "filter-field-name": "energy",
+                                            "filter-field-value": ">=50 MeV",
+                                            "data-field": "flux",
+                                            "name": "≥ 50 MeV"
+                                        },
+                                        {
+                                            "filter-field-name": "energy",
+                                            "filter-field-value": ">=100 MeV",
+                                            "data-field": "flux",
+                                            "name": "≥ 100 MeV"
+                                        },
+                                        {
+                                            "filter-field-name": "energy",
+                                            "filter-field-value": ">=500 MeV",
+                                            "data-field": "flux",
+                                            "name": "≥ 500 MeV"
+                                        }
+                                    ],
+                                    "series-colors": [
+                                        { "light": "#ff2200", "dark": "#1dff00" },
+                                        { "light": "#1900ff", "dark": "#faff00" },
+                                        { "light": "#1dff00", "dark": "#ff2200" },
+                                        { "light": "#F39C12", "dark": "#ffffff" }
+                                    ]
+                                }' 
+                                id="swpc-hicharts-1" 
+                                style="overflow: hidden;">
+                                </div>
+                            
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+</body>
+</html>
